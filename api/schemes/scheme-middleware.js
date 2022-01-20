@@ -1,4 +1,4 @@
-const dbConfig = require("../../../node-db3-guided/data/db-config")
+const db = require('../../data/db-config')
 
 /*
   If `scheme_id` does not exist in the database:
@@ -9,7 +9,7 @@ const dbConfig = require("../../../node-db3-guided/data/db-config")
   }
 */
 const checkSchemeId = async (req, res, next) => {
-  const scheme = await dbConfig('schemes').where('scheme_id', req.params.scheme_id)
+  const scheme = await db('schemes').where('scheme_id', req.params.scheme_id).first()
   if (scheme) {
     next()
   } else {
