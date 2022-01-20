@@ -143,7 +143,7 @@ async function findSteps(scheme_id) { // EXERCISE C
     .where('sc.scheme_id', scheme_id)
     .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')
     .orderBy('st.step_number', 'asc')
-    .select('st.step_id', 'st.step_number', 'st.instructions')
+    .select('st.step_id', 'st.step_number', 'st.instructions', 'sc.scheme_name')
   
   return data
 }
