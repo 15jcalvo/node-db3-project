@@ -26,7 +26,15 @@ const checkSchemeId = async (req, res, next) => {
   }
 */
 const validateScheme = (req, res, next) => {
-
+  if (!req.body.step.instructions) {
+    next({ status: 400, message: `invalid step`})
+  } 
+  else if (isNaN(parseInt(req.body.step.step_number)) || req.body.step_number < 0){
+    next({ status: 400, message: `invalid step`})
+  }
+  else {
+    next()
+  }
 }
 
 /*
@@ -39,7 +47,15 @@ const validateScheme = (req, res, next) => {
   }
 */
 const validateStep = (req, res, next) => {
-
+  if (!req.body.step.instructions) {
+    next({ status: 400, message: `invalid step`})
+  } 
+  else if (isNaN(parseInt(req.body.step.step_number)) || req.body.step_number < 0){
+    next({ status: 400, message: `invalid step`})
+  }
+  else {
+    next()
+  }
 }
 
 module.exports = {
